@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PasswordGen: generatore di password per Windows e Android</title>
+<meta name="description" content="Generatore di password casuali, sicure e facili da ricordare, con storico cifrato e promemoria. Per Windows e Android.">
+<style>
+:root{--bg:#ffffff;--fg:#1c2430;--muted:#5b6675;--accent:#1a5fd0;--card:#f4f6fa;--line:#dde2ea}
+@media (prefers-color-scheme:dark){:root{--bg:#12161c;--fg:#e6eaf0;--muted:#9aa5b4;--accent:#6aa3ff;--card:#1b212a;--line:#2a3340}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header,main,footer{max-width:760px;margin:0 auto;padding:0 16px}
+header{padding-top:20px;padding-bottom:8px;display:flex;gap:16px;flex-wrap:wrap;align-items:baseline;border-bottom:1px solid var(--line)}
+header a.brand{font-weight:700;font-size:1.15rem;color:var(--fg);text-decoration:none;margin-right:auto}
+header a{color:var(--accent);text-decoration:none}
+main{padding-top:24px;padding-bottom:40px}
+h1{font-size:1.8rem;line-height:1.25;margin:0 0 .5em}
+h2{font-size:1.3rem;margin:1.8em 0 .4em}
+h3{font-size:1.1rem;margin:1.4em 0 .3em}
+a{color:var(--accent)}
+code{background:var(--card);padding:1px 5px;border-radius:4px;font-size:.92em;word-break:break-word}
+table{border-collapse:collapse;width:100%;margin:1em 0;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:var(--card)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:20px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+.card h3{margin:0 0 4px}
+.btn{display:inline-block;margin-top:8px;padding:9px 14px;border-radius:8px;background:var(--accent);color:#fff;text-decoration:none;font-weight:600}
+.small{color:var(--muted);font-size:.9rem}
+footer{padding-top:16px;padding-bottom:32px;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
+</style>
+</head>
+<body>
+<header><a class="brand" href="./">PasswordGen</a><a href="guida.html">Guida</a><a href="privacy.html">Privacy</a><a href="https://github.com/francavilla/passwordgen-releases/releases">Tutte le versioni</a></header>
+<main>
+
+<h1>PasswordGen</h1>
+<p>Genera password <strong>casuali, sicure e facili da ricordare</strong>, tiene lo storico dei cambi e ti ricorda quando cambiarle. Per <strong>Windows</strong> e <strong>Android</strong>.</p>
+<p>Funziona subito, senza account e senza collegarsi a niente. La sincronizzazione tra PC e telefono e gli altri servizi online sono <strong>facoltativi e spenti di base</strong>: nessun dato viene raccolto da noi, perché non esiste un server di PasswordGen.</p>
+<div class="cards">
+  <div class="card"><h3>Windows</h3><p class="small">Windows 10 o 11, .NET Framework 4.8. Estrai lo zip e avvia, senza installazione.</p>
+    <a class="btn" id="dl-desktop" href="https://github.com/francavilla/passwordgen-releases/releases">Scarica per Windows</a><p class="small" id="v-desktop"></p></div>
+  <div class="card"><h3>Android</h3><p class="small">Android 7.0 o successivo, telefono ARM a 64 bit. Installa l'APK consentendo le origini sconosciute.</p>
+    <a class="btn" id="dl-android" href="https://github.com/francavilla/passwordgen-releases/releases">Scarica per Android</a><p class="small" id="v-android"></p></div>
+</div>
+<p class="small">Le note di ogni versione riportano l'impronta SHA-256 del file, per verificare che il download sia integro.</p>
+<h2>Cosa fa</h2>
+<ul>
+<li>Tre tipi di password: parole italiane, sillabe pronunciabili, caratteri casuali.</li>
+<li>Regole configurabili e regole diverse per ogni «titolo» (per esempio un portale aziendale).</li>
+<li>Storico cifrato con scadenze per titolo e promemoria.</li>
+<li>Blocco dell'app con Windows Hello, impronta o PIN.</li>
+<li>Sincronizzazione facoltativa tra PC e telefono, con un file cifrato dalla tua frase segreta.</li>
+<li>Controllo facoltativo delle password comparse in violazioni di dati, senza inviare la password.</li>
+</ul>
+<p><a href="guida.html">Leggi la guida</a> · <a href="privacy.html">Informativa sulla privacy</a></p>
+<script>
+(function () {
+  function setup(platform, label, file) {
+    fetch('updates/' + platform + '.json', { cache: 'no-store' })
+      .then(function (r) { return r.json(); })
+      .then(function (m) {
+        if (!m || m.format !== 1 || !/^[0-9]+(\.[0-9]+){2,3}$/.test(m.version)) { return; }
+        var base = 'https://github.com/francavilla/passwordgen-releases/releases/download/passwordgen-' + platform + '-v' + m.version + '/';
+        document.getElementById('dl-' + platform).href = base + file.replace('{v}', m.version);
+        document.getElementById('v-' + platform).textContent = 'Versione ' + m.version;
+      })
+      .catch(function () {});
+  }
+  setup('desktop', 'Windows', 'PasswordGen-Desktop-v{v}.zip');
+  setup('android', 'Android', 'PasswordGen-Android-v{v}.apk');
+})();
+</script>
+
+</main>
+<footer>PasswordGen · <a href="privacy.html">Informativa sulla privacy</a> · afcoding.it</footer>
+</body>
+</html>

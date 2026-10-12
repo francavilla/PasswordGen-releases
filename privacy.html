@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PasswordGen: informativa sulla privacy</title>
+<meta name="description" content="Informativa sulla privacy di PasswordGen: nessun dato raccolto, cosa esce dal dispositivo solo se lo attivi.">
+<style>
+:root{--bg:#ffffff;--fg:#1c2430;--muted:#5b6675;--accent:#1a5fd0;--card:#f4f6fa;--line:#dde2ea}
+@media (prefers-color-scheme:dark){:root{--bg:#12161c;--fg:#e6eaf0;--muted:#9aa5b4;--accent:#6aa3ff;--card:#1b212a;--line:#2a3340}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header,main,footer{max-width:760px;margin:0 auto;padding:0 16px}
+header{padding-top:20px;padding-bottom:8px;display:flex;gap:16px;flex-wrap:wrap;align-items:baseline;border-bottom:1px solid var(--line)}
+header a.brand{font-weight:700;font-size:1.15rem;color:var(--fg);text-decoration:none;margin-right:auto}
+header a{color:var(--accent);text-decoration:none}
+main{padding-top:24px;padding-bottom:40px}
+h1{font-size:1.8rem;line-height:1.25;margin:0 0 .5em}
+h2{font-size:1.3rem;margin:1.8em 0 .4em}
+h3{font-size:1.1rem;margin:1.4em 0 .3em}
+a{color:var(--accent)}
+code{background:var(--card);padding:1px 5px;border-radius:4px;font-size:.92em;word-break:break-word}
+table{border-collapse:collapse;width:100%;margin:1em 0;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:var(--card)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:20px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+.card h3{margin:0 0 4px}
+.btn{display:inline-block;margin-top:8px;padding:9px 14px;border-radius:8px;background:var(--accent);color:#fff;text-decoration:none;font-weight:600}
+.small{color:var(--muted);font-size:.9rem}
+footer{padding-top:16px;padding-bottom:32px;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
+</style>
+</head>
+<body>
+<header><a class="brand" href="./">PasswordGen</a><a href="guida.html">Guida</a><a href="privacy.html">Privacy</a><a href="https://github.com/francavilla/passwordgen-releases/releases">Tutte le versioni</a></header>
+<main>
+<h1>PasswordGen: informativa sulla privacy</h1>
+<p>Ultimo aggiornamento: 12 ottobre 2026</p>
+<p>PasswordGen è un'applicazione per Windows e Android che genera password e ne tiene lo storico. <strong>Non esiste un server di PasswordGen</strong>: chi sviluppa l'app non riceve, non raccoglie e non conserva nessun dato degli utenti.
+L'app non contiene pubblicità, statistiche d'uso né sistemi di tracciamento.</p>
+<h2>Dove stanno i tuoi dati</h2>
+<ul>
+<li>Le <strong>impostazioni</strong>, lo <strong>storico delle password</strong> e le <strong>frasi segrete</strong> restano sul tuo dispositivo. Lo storico e le frasi sono cifrati con le protezioni del sistema (DPAPI su Windows, Keystore su Android).</li>
+<li>Le password che copi vengono cancellate dagli appunti dopo 30 secondi.</li>
+<li>Il <strong>registro degli errori</strong> (<code>passwordgen.log</code>) resta sul dispositivo e non contiene mai password, frasi segrete né voci dello storico. Lo condividi solo se decidi tu di farlo.</li>
+</ul>
+<h2>Cosa esce dal dispositivo (solo se attivi tu la funzione)</h2>
+<p>Tutte queste funzioni sono <strong>facoltative e spente di base</strong>.</p>
+<ol>
+<li><strong>Sincronizzazione con Google Drive.</strong> Accedi con il <strong>tuo</strong> account Google; l'app crea nel tuo Drive il file cifrato <code>PasswordGen-sync.pgx</code> e lo aggiorna.
+   L'app chiede un solo permesso, <code>drive.file</code>: può vedere e modificare <strong>soltanto i file che ha creato lei</strong>, non il resto del tuo Drive. Non vede la password del tuo account Google.
+   Il file è cifrato con una frase segreta che conosci solo tu: nemmeno Google o chi sviluppa l'app può leggerne il contenuto. Il token di accesso resta sul dispositivo, cifrato. Puoi revocare l'accesso in qualsiasi momento dalle impostazioni dell'account Google
+   (Sicurezza → Accesso di terze parti) o dall'app, disattivando la sincronizzazione.</li>
+<li><strong>Sincronizzazione con un file.</strong> Il file cifrato viene scritto nella cartella che scegli (per esempio una cartella già sincronizzata da un altro servizio): la gestione di quel servizio è soggetta alla sua informativa.</li>
+<li><strong>Controllo delle nuove versioni.</strong> L'app scarica un piccolo file pubblico con il numero dell'ultima versione (da <code>raw.githubusercontent.com</code>, GitHub). Non invia nulla di tuo; come ogni richiesta web, GitHub vede l'indirizzo IP.</li>
+<li><strong>Controllo delle password compromesse.</strong> Dopo «Copia», l'app chiede al servizio pubblico <em>Pwned Passwords</em> (<code>api.pwnedpasswords.com</code>) se la password è comparsa in violazioni di dati. Si usa il metodo «k-anonymity»: si invia solo l'inizio (5 caratteri) dell'impronta SHA-1 della password;
+   il confronto con il resto avviene sul tuo dispositivo, quindi né la password né la sua impronta intera escono dal dispositivo.</li>
+</ol>
+<h2>Uso dei dati ricevuti dalle API di Google</h2>
+<p>L'uso e il trasferimento a qualsiasi altra app delle informazioni ricevute dalle API di Google rispetta la <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, inclusi i requisiti sull'uso limitato (<em>Limited Use</em>).
+PasswordGen usa l'accesso a Drive solo per leggere e scrivere il file di sincronizzazione che crea, non lo condivide con nessuno e non lo usa per pubblicità o altri scopi.</p>
+<h2>Cancellare i tuoi dati</h2>
+<ul>
+<li>Disinstallando l'app (o eliminando la cartella <code>%AppData%\PasswordGen</code> su Windows) si cancellano le impostazioni e lo storico locali.</li>
+<li>Il file <code>PasswordGen-sync.pgx</code> nel tuo Drive si può eliminare dal tuo Drive in qualsiasi momento.</li>
+<li>Per scollegare l'app da Google: account Google → Sicurezza → Accesso di terze parti → PasswordGen → Rimuovi accesso.</li>
+</ul>
+<h2>Contatti e modifiche</h2>
+<p>Per domande su questa informativa apri una segnalazione nel repository <a href="https://github.com/francavilla/passwordgen-releases/issues"><code>francavilla/passwordgen-releases</code></a> oppure scrivi all'indirizzo di assistenza indicato nella schermata di consenso di Google.
+Se l'informativa cambia, la nuova versione sarà pubblicata in questa pagina con la data aggiornata.</p>
+</main>
+<footer>PasswordGen · <a href="privacy.html">Informativa sulla privacy</a> · afcoding.it</footer>
+</body>
+</html>

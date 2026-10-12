@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PasswordGen: guida per un nuovo utente</title>
+<meta name="description" content="Installazione, primo uso, sincronizzazione e privacy di PasswordGen.">
+<style>
+:root{--bg:#ffffff;--fg:#1c2430;--muted:#5b6675;--accent:#1a5fd0;--card:#f4f6fa;--line:#dde2ea}
+@media (prefers-color-scheme:dark){:root{--bg:#12161c;--fg:#e6eaf0;--muted:#9aa5b4;--accent:#6aa3ff;--card:#1b212a;--line:#2a3340}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header,main,footer{max-width:760px;margin:0 auto;padding:0 16px}
+header{padding-top:20px;padding-bottom:8px;display:flex;gap:16px;flex-wrap:wrap;align-items:baseline;border-bottom:1px solid var(--line)}
+header a.brand{font-weight:700;font-size:1.15rem;color:var(--fg);text-decoration:none;margin-right:auto}
+header a{color:var(--accent);text-decoration:none}
+main{padding-top:24px;padding-bottom:40px}
+h1{font-size:1.8rem;line-height:1.25;margin:0 0 .5em}
+h2{font-size:1.3rem;margin:1.8em 0 .4em}
+h3{font-size:1.1rem;margin:1.4em 0 .3em}
+a{color:var(--accent)}
+code{background:var(--card);padding:1px 5px;border-radius:4px;font-size:.92em;word-break:break-word}
+table{border-collapse:collapse;width:100%;margin:1em 0;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:var(--card)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:20px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+.card h3{margin:0 0 4px}
+.btn{display:inline-block;margin-top:8px;padding:9px 14px;border-radius:8px;background:var(--accent);color:#fff;text-decoration:none;font-weight:600}
+.small{color:var(--muted);font-size:.9rem}
+footer{padding-top:16px;padding-bottom:32px;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
+</style>
+</head>
+<body>
+<header><a class="brand" href="./">PasswordGen</a><a href="guida.html">Guida</a><a href="privacy.html">Privacy</a><a href="https://github.com/francavilla/passwordgen-releases/releases">Tutte le versioni</a></header>
+<main>
+<h1>PasswordGen: guida per un nuovo utente</h1>
+<p>PasswordGen genera password <strong>casuali, sicure e facili da ricordare</strong>, tiene lo <strong>storico</strong> dei cambi e ti ricorda <strong>quando cambiarle</strong>. Esiste per <strong>Windows</strong> e per <strong>Android</strong>.
+Funziona subito, senza account e senza collegarsi a niente: la sincronizzazione tra PC e telefono e gli altri servizi online sono <strong>facoltativi e spenti di base</strong>.</p>
+<h2>1. Installare</h2>
+<h3>Windows (10 o 11)</h3>
+<ol>
+<li>Scarica <code>PasswordGen-Desktop-vX.Y.Z.zip</code> dalla <a href="https://github.com/francavilla/passwordgen-releases/releases/latest">pagina delle release</a> (cerca quella «Desktop»).</li>
+<li>(Facoltativo) Controlla che il file sia integro: nelle note della release c'è l'impronta <strong>SHA-256</strong>; in PowerShell <code>Get-FileHash -Algorithm SHA256 .\PasswordGen-Desktop-vX.Y.Z.zip</code> deve dare lo stesso valore.</li>
+<li>Estrai lo zip in una cartella tua (per esempio <code>Documenti\PasswordGen</code>) e avvia <code>PasswordGen.exe</code>. Non c'è nessuna installazione.</li>
+<li>Se Windows mostra «Windows ha protetto il PC», premi <strong>Ulteriori informazioni → Esegui comunque</strong>: il programma non è firmato digitalmente, per questo compare l'avviso.
+   In alternativa, prima di estrarre, clic destro sullo zip → <em>Proprietà</em> → spunta <strong>Annulla blocco</strong>.</li>
+</ol>
+<p>Serve il .NET Framework 4.8, già presente in Windows 10 (aggiornato) e in Windows 11.</p>
+<h3>Android (7.0 o successivo, telefono ARM a 64 bit)</h3>
+<ol>
+<li>Dalla stessa <a href="https://github.com/francavilla/passwordgen-releases/releases/latest">pagina delle release</a> scarica il file <code>PasswordGen-Android-vX.Y.Z.apk</code> (la release «Android»).</li>
+<li>Aprilo dal telefono. Android chiede di consentire l'installazione da <strong>origini sconosciute</strong> per il browser o il gestore di file che stai usando: consentilo solo per questa installazione.</li>
+<li>Se hai una versione precedente alla 2.17.0, va <strong>disinstallata</strong> prima (la chiave di firma è cambiata): esporta lo storico dall'app, disinstalla, installa la nuova e reimporta.
+   Dalla 2.17.0 in poi gli aggiornamenti si installano normalmente sopra la versione precedente.</li>
+</ol>
+<h2>2. Il primo uso</h2>
+<ol>
+<li>Compaiono alcune <strong>proposte</strong> di password (tasto <em>Genera nuove proposte</em> per averne altre).</li>
+<li>Scegli il <strong>tipo</strong>:
+   - <em>Parole italiane</em> (consigliata): facile da digitare e ricordare, per esempio <code>Lampo-Cavallo-Nebbia-Fiume47!</code>;
+   - <em>Sillabe pronunciabili</em>: si «leggono» come parole inventate;
+   - <em>Caratteri casuali</em>: per quando basta copiarla.</li>
+<li>Imposta le <strong>regole</strong> richieste dal tuo servizio o dall'azienda (lunghezza minima, maiuscole, numeri, caratteri speciali).</li>
+<li>Premi <strong>Copia</strong> sulla proposta scelta e incollala dove serve: gli appunti si svuotano da soli dopo 30 secondi.</li>
+<li>Dopo aver cambiato la password sul servizio, premi <strong>Ho cambiato la password</strong>: l'app ti chiede quale proposta hai usato e a quale <strong>titolo</strong> (il «dove la uso», per esempio «Portale HR») va associata.</li>
+</ol>
+<h2>3. Storico, titoli e scadenze</h2>
+<ul>
+<li>L'<strong>Storico</strong> conserva le ultime 20 password <strong>per ogni titolo</strong>, con numero e data. Sono mascherate: puoi mostrarle, copiarle o eliminarne una.</li>
+<li>Una nuova password non può essere uguale a una delle ultime 20 dello stesso titolo, e le proposte evitano le varianti di quelle già usate.</li>
+<li>Ogni titolo ha la sua <strong>scadenza</strong>: puoi impostare una durata diversa dalla generale e <strong>regole di generazione proprie</strong> (lunghezza, simboli, caratteri esclusi).</li>
+<li>Un banner in alto (e una notifica su Android, o l'avvio con Windows se lo attivi) ti avvisa quando una password sta per scadere.</li>
+<li>Lo storico è <strong>cifrato</strong> sul tuo dispositivo: solo il tuo account Windows, o il Keystore del tuo telefono, può aprirlo.</li>
+</ul>
+<h2>4. Proteggere l'app</h2>
+<p>Nelle impostazioni puoi attivare il <strong>blocco dell'app</strong>: all'avvio e dopo il tempo che scegli in secondo piano chiede Windows Hello, l'impronta o il PIN del telefono, oppure un <strong>PIN o una password dell'app</strong>.
+Dopo 5 errori scatta un'attesa crescente. Con il blocco attivo la finestra non compare negli screenshot.</p>
+<h2>5. Sincronizzare PC e telefono (facoltativo)</h2>
+<p>Per avere lo stesso storico e le stesse scadenze su più dispositivi si usa un <strong>file cifrato</strong> (<code>PasswordGen-sync.pgx</code>) protetto da una <strong>frase segreta</strong> scelta da te (almeno 8 caratteri).
+<strong>Non si può recuperare</strong>: se la dimentichi il file non si apre più. Scrivila in un posto sicuro.</p>
+<p>Tre scelte, in <em>Sincronizzazione e backup → Imposta...</em>:</p>
+<table>
+<thead>
+<tr>
+<th>Scelta</th>
+<th>Cosa serve</th>
+<th>Cosa succede</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Nessuna sincronizzazione</strong></td>
+<td>niente</td>
+<td>L'app resta del tutto locale. Puoi sempre fare un backup con <em>Esporta</em> e riportarlo con <em>Importa</em>.</td>
+</tr>
+<tr>
+<td><strong>Un file</strong></td>
+<td>una cartella che già si sincronizza da sola (Google Drive per desktop, OneDrive, Dropbox...)</td>
+<td>Ogni dispositivo legge e scrive quel file. Nessun accesso a Google dall'app.</td>
+</tr>
+<tr>
+<td><strong>Il mio Google Drive</strong></td>
+<td>un account Google <strong>tuo</strong></td>
+<td>L'app apre il browser, accedi con il tuo account e consenti l'accesso. Il file viene creato <strong>nel tuo Drive</strong>.</td>
+</tr>
+</tbody>
+</table>
+<p>Cose da sapere sul Drive:
+- Ogni persona accede con <strong>il proprio</strong> account: nessuno vede il Drive di un altro, e l'app non ha mai la tua password di Google.
+- L'app vede <strong>solo i file che ha creato lei</strong> (non il resto del tuo Drive).
+- Per usare lo stesso storico su due dispositivi tuoi, collegali <strong>allo stesso account e con la stessa frase segreta</strong>.
+- Se Google dice che l'app non è verificata o rifiuta l'accesso, usa l'opzione <strong>Un file</strong> oppure nessuna sincronizzazione: l'app funziona benissimo anche così.
+- Due persone diverse non devono usare lo stesso file né la stessa frase: lo storico è personale.</p>
+<p>Per aggiungere un secondo dispositivo: installa l'app, apri <em>Sincronizzazione e backup → Imposta...</em>, scegli lo stesso Drive o lo stesso file e inserisci <strong>la stessa frase segreta</strong>.</p>
+<h2>6. Cosa esce dal tuo dispositivo</h2>
+<p>Solo quello che attivi tu:
+- <strong>Sincronizzazione</strong>: il file cifrato, nel Drive o nella cartella che scegli.
+- <strong>Controllo delle nuove versioni</strong> (spento di base): legge un piccolo file pubblico con il numero della versione corrente; non invia niente di tuo.
+- <strong>Controllo delle password compromesse</strong> (spento di base): dopo «Copia» chiede a <em>Pwned Passwords</em> (Have I Been Pwned) se la password è comparsa in violazioni di dati. Si inviano solo i <strong>primi 5 caratteri</strong> dell'impronta SHA-1: né la password né la sua impronta intera escono dal dispositivo.</p>
+<h2>7. Aggiornamenti</h2>
+<p>Attiva <em>Controlla all'avvio se esiste una nuova versione</em> in Impostazioni → Aggiornamenti, oppure premi <strong>Controlla ora</strong>. Quando c'è una novità compare un avviso con <strong>Scarica</strong> (apre la pagina della versione) e <strong>Non ora</strong>.
+L'app non scarica né installa niente da sola: scarichi tu il nuovo zip o APK e lo sostituisci.</p>
+<h2>8. Se qualcosa non va</h2>
+<ul>
+<li><strong>Messaggi di errore o salvataggi che non riescono</strong>: in Impostazioni → Aggiornamenti c'è il <strong>registro degli errori</strong> («Mostra il registro» su Windows, «Copia il registro» su Android). Contiene data, punto del programma e messaggio, mai password né frasi segrete: puoi incollarlo in una segnalazione.</li>
+<li><strong>Ho dimenticato la frase segreta</strong>: non si recupera. Puoi ripartire creando un nuovo file di sincronizzazione (lo storico locale resta sul dispositivo).</li>
+<li><strong>Il PIN dell'app è sbagliato troppe volte</strong>: aspetta la fine dell'attesa; non c'è modo di aggirarla.</li>
+<li><strong>L'APK non si installa sopra la vecchia versione</strong>: succede solo passando da una versione precedente alla 2.17.0 (vedi sopra).</li>
+</ul>
+</main>
+<footer>PasswordGen · <a href="privacy.html">Informativa sulla privacy</a> · afcoding.it</footer>
+</body>
+</html>
