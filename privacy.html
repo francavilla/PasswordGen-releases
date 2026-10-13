@@ -41,12 +41,12 @@ a{color:var(--a1)}
 /* hero */
 .hero{position:relative;overflow:hidden;padding:64px 0 56px}
 .hero:before{content:"";position:absolute;inset:-20% -10% auto -10%;height:120%;background:radial-gradient(600px 320px at 15% 10%,var(--glow1),transparent 70%),radial-gradient(520px 300px at 90% 30%,var(--glow2),transparent 70%);pointer-events:none}
-.hero .wrap{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center}
 .hero .wrap>*{min-width:0}
 @media (max-width:860px){.hero .wrap{grid-template-columns:minmax(0,1fr)}.hero{padding-top:40px}}
 .eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--soft);border:1px solid var(--line);color:var(--muted);padding:5px 12px;border-radius:999px;font-size:.84rem;font-weight:600}
 .eyebrow i{width:8px;height:8px;border-radius:50%;background:var(--ok);display:inline-block}
-h1{font-size:clamp(2.1rem,5.2vw,3.5rem);line-height:1.08;letter-spacing:-.03em;margin:16px 0 14px;font-weight:850}
+h1{font-size:clamp(2rem,4.6vw,3.25rem);line-height:1.08;letter-spacing:-.03em;margin:16px 0 14px;font-weight:850}
 h1 .grad{background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;background-clip:text;color:transparent}
 .lead{font-size:1.14rem;color:var(--muted);max-width:34em;margin:0 0 24px}
 .btns{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:12px}
@@ -71,6 +71,7 @@ h1 .grad{background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-backgrou
 .meter b{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--warn),var(--ok))}
 .pill{padding:2px 9px;border-radius:99px;background:var(--soft);font-weight:700;color:var(--fg);font-size:.76rem}
 .copy{font-size:.76rem;font-weight:700;border:1px solid var(--line);border-radius:8px;padding:3px 9px;color:var(--a1);background:var(--card)}
+.shot{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--line);box-shadow:var(--shadow)}
 .note{text-align:center;color:var(--muted);font-size:.8rem;margin:10px 0 0}
 /* sezioni */
 section{padding:64px 0}
