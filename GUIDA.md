@@ -3,6 +3,8 @@
 PasswordGen genera password **casuali, sicure e facili da ricordare**, tiene lo **storico** dei cambi e ti ricorda **quando cambiarle**. Esiste per **Windows** e per **Android**.
 Funziona subito, senza account e senza collegarsi a niente: la sincronizzazione tra PC e telefono e gli altri servizi online sono **facoltativi e spenti di base**.
 
+> **Un dettaglio sui nomi:** le preferenze dell'app stanno nella scheda **«Impostazioni»** su Windows e nella scheda **«Opzioni»** su Android (dalla versione 2.18.2). Nella guida, «Impostazioni» vale per entrambe.
+
 ## 1. Installare
 
 ### Windows (10 o 11)
