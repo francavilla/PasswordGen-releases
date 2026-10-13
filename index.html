@@ -72,6 +72,8 @@ h1 .grad{background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-backgrou
 .pill{padding:2px 9px;border-radius:99px;background:var(--soft);font-weight:700;color:var(--fg);font-size:.76rem}
 .copy{font-size:.76rem;font-weight:700;border:1px solid var(--line);border-radius:8px;padding:3px 9px;color:var(--a1);background:var(--card)}
 .shot{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--line);box-shadow:var(--shadow)}
+.shots{position:relative;padding-bottom:46px}
+.phone{position:absolute;right:-6px;bottom:0;width:30%;max-width:210px;height:auto;border-radius:22px;border:5px solid #0f172a;background:#0f172a;box-shadow:0 18px 40px rgba(15,23,42,.35)}
 .note{text-align:center;color:var(--muted);font-size:.8rem;margin:10px 0 0}
 /* sezioni */
 section{padding:64px 0}
@@ -142,8 +144,8 @@ footer a{color:var(--muted)}
 <p class="ver" id="hero-ver"></p>
 </div>
 <div>
-<img class="shot" src="assets/windows.webp" width="1200" height="863" alt="La finestra di PasswordGen per Windows: tre proposte di password, con la robustezza e il pulsante Copia, e il conto dei giorni alla scadenza della password attuale.">
-<p class="note">PasswordGen per Windows. Le password mostrate sono proposte casuali, generate sul momento.</p>
+<div class="shots"><img class="shot" src="assets/windows.webp" width="1200" height="863" alt="La finestra di PasswordGen per Windows: tre proposte di password, con la robustezza e il pulsante Copia, e il conto dei giorni alla scadenza della password attuale."><img class="phone" src="assets/android.webp" width="520" height="833" alt="La schermata di PasswordGen per Android: giorni alla scadenza, pulsante Genera nuove proposte e una proposta di password con il pulsante Copia." loading="lazy"></div>
+<p class="note">PasswordGen per Windows e per Android. Le password mostrate sono proposte casuali, generate sul momento.</p>
 </div>
 </div></header>
 
