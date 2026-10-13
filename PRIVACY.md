@@ -32,5 +32,5 @@ PasswordGen usa l'accesso a Drive solo per leggere e scrivere il file di sincron
 - Per scollegare l'app da Google: account Google → Sicurezza → Accesso di terze parti → PasswordGen → Rimuovi accesso.
 
 ## Contatti e modifiche
-Per domande su questa informativa apri una segnalazione nel repository [`francavilla/passwordgen-releases`](https://github.com/francavilla/passwordgen-releases/issues) oppure scrivi all'indirizzo di assistenza indicato nella schermata di consenso di Google.
+Per domande su questa informativa scrivi all'indirizzo di assistenza indicato nella schermata di consenso di Google quando accedi a Google Drive dall'app.
 Se l'informativa cambia, la nuova versione sarà pubblicata in questa pagina con la data aggiornata.

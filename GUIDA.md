@@ -8,7 +8,7 @@ Funziona subito, senza account e senza collegarsi a niente: la sincronizzazione 
 ## 1. Installare
 
 ### Windows (10 o 11)
-1. Scarica `PasswordGen-Desktop-vX.Y.Z.zip` dalla [pagina delle release](https://github.com/francavilla/passwordgen-releases/releases/latest) (cerca quella «Desktop»).
+1. Scarica lo zip di PasswordGen per Windows dalla sezione [Scarica](https://passwordgen.afcoding.it/#scarica) di questo sito.
 2. (Facoltativo) Controlla che il file sia integro: nelle note della release c'è l'impronta **SHA-256**; in PowerShell `Get-FileHash -Algorithm SHA256 .\PasswordGen-Desktop-vX.Y.Z.zip` deve dare lo stesso valore.
 3. Estrai lo zip in una cartella tua (per esempio `Documenti\PasswordGen`) e avvia `PasswordGen.exe`. Non c'è nessuna installazione.
 4. Se Windows mostra «Windows ha protetto il PC», premi **Ulteriori informazioni → Esegui comunque**: il programma non è firmato digitalmente, per questo compare l'avviso.
@@ -17,7 +17,7 @@ Funziona subito, senza account e senza collegarsi a niente: la sincronizzazione 
 Serve il .NET Framework 4.8, già presente in Windows 10 (aggiornato) e in Windows 11.
 
 ### Android (7.0 o successivo, telefono ARM a 64 bit)
-1. Dalla stessa [pagina delle release](https://github.com/francavilla/passwordgen-releases/releases/latest) scarica il file `PasswordGen-Android-vX.Y.Z.apk` (la release «Android»).
+1. Dalla stessa sezione [Scarica](https://passwordgen.afcoding.it/#scarica) scarica il file APK per Android.
 2. Aprilo dal telefono. Android chiede di consentire l'installazione da **origini sconosciute** per il browser o il gestore di file che stai usando: consentilo solo per questa installazione.
 3. Se hai una versione precedente alla 2.17.0, va **disinstallata** prima (la chiave di firma è cambiata): esporta lo storico dall'app, disinstalla, installa la nuova e reimporta.
    Dalla 2.17.0 in poi gli aggiornamenti si installano normalmente sopra la versione precedente.
