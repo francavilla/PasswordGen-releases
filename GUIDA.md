@@ -23,9 +23,9 @@ Serve il .NET Framework 4.8, già presente in Windows 10 (aggiornato) e in Windo
 ## 2. Il primo uso
 1. Compaiono alcune **proposte** di password (tasto *Genera nuove proposte* per averne altre).
 2. Scegli il **tipo**:
-   - *Parole italiane* (consigliata): facile da digitare e ricordare, per esempio `Lampo-Cavallo-Nebbia-Fiume47!`;
-   - *Sillabe pronunciabili*: si «leggono» come parole inventate;
-   - *Caratteri casuali*: per quando basta copiarla.
+    - *Parole italiane* (consigliata): facile da digitare e ricordare, per esempio `Lampo-Cavallo-Nebbia-Fiume47!`;
+    - *Sillabe pronunciabili*: si «leggono» come parole inventate;
+    - *Caratteri casuali*: per quando basta copiarla.
 3. Imposta le **regole** richieste dal tuo servizio o dall'azienda (lunghezza minima, maiuscole, numeri, caratteri speciali).
 4. Premi **Copia** sulla proposta scelta e incollala dove serve: gli appunti si svuotano da soli dopo 30 secondi.
 5. Dopo aver cambiato la password sul servizio, premi **Ho cambiato la password**: l'app ti chiede quale proposta hai usato e a quale **titolo** (il «dove la uso», per esempio «Portale HR») va associata.
