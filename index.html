@@ -199,13 +199,13 @@ footer a{color:var(--muted)}
 <div class="card"><h3>Windows</h3>
 <div class="chips"><span class="chip">Windows 10 / 11</span><span class="chip">.NET Framework 4.8</span><span class="chip">Nessuna installazione</span></div>
 <p>Scarica lo zip, estrailo in una cartella tua e avvia <code>PasswordGen.exe</code>.</p>
-<a class="btn primary" id="dl-desktop" href="https://github.com/francavilla/passwordgen-releases/releases"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 5.5 10.5 4.5v7H3zM11.5 4.4 21 3v8.5h-9.5zM3 12.5h7.5v7L3 18.5zM11.5 12.5H21V21l-9.5-1.4z"/></svg> Scarica per Windows</a>
-<p class="ver" id="v-desktop"></p></div>
+<a class="btn primary" id="dl-desktop" href="https://afcoding.it/passwordgen-download/PasswordGen-Desktop-latest.zip"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 5.5 10.5 4.5v7H3zM11.5 4.4 21 3v8.5h-9.5zM3 12.5h7.5v7L3 18.5zM11.5 12.5H21V21l-9.5-1.4z"/></svg> Scarica per Windows</a>
+<p class="ver" id="v-desktop"></p><p class="ver sha" id="s-desktop"></p></div>
 <div class="card"><h3>Android</h3>
 <div class="chips"><span class="chip">Android 7.0 o successivo</span><span class="chip">ARM a 64 bit</span></div>
 <p>Scarica l'APK e installalo consentendo le origini sconosciute per questa installazione.</p>
-<a class="btn primary" id="dl-android" href="https://github.com/francavilla/passwordgen-releases/releases"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 9h10v8a1.5 1.5 0 0 1-1.5 1.5H15V21a1 1 0 0 1-2 0v-2.5h-2V21a1 1 0 0 1-2 0v-2.5h-.5A1.5 1.5 0 0 1 7 17zM5.5 9.5a1 1 0 0 1 2 0V15a1 1 0 0 1-2 0zM16.5 9.5a1 1 0 0 1 2 0V15a1 1 0 0 1-2 0zM8 8a4 4 0 0 1 8 0zM9.6 5.2 8.7 3.8M14.4 5.2l.9-1.4"/></svg> Scarica per Android</a>
-<p class="ver" id="v-android"></p></div>
+<a class="btn primary" id="dl-android" href="https://afcoding.it/passwordgen-download/PasswordGen-Android-latest.apk"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 9h10v8a1.5 1.5 0 0 1-1.5 1.5H15V21a1 1 0 0 1-2 0v-2.5h-2V21a1 1 0 0 1-2 0v-2.5h-.5A1.5 1.5 0 0 1 7 17zM5.5 9.5a1 1 0 0 1 2 0V15a1 1 0 0 1-2 0zM16.5 9.5a1 1 0 0 1 2 0V15a1 1 0 0 1-2 0zM8 8a4 4 0 0 1 8 0zM9.6 5.2 8.7 3.8M14.4 5.2l.9-1.4"/></svg> Scarica per Android</a>
+<p class="ver" id="v-android"></p><p class="ver sha" id="s-android"></p></div>
 </div>
 <p class="ver" style="margin-top:16px">Non sai da dove cominciare? <a href="guida.html">Leggi la guida</a>.</p>
 </div></section>
@@ -215,26 +215,32 @@ footer a{color:var(--muted)}
 <h2>Prima di cominciare</h2>
 <details><summary>Serve un account?</summary><p>No. L'app funziona subito, senza registrazione. Un account Google serve solo se vuoi sincronizzare PC e telefono tramite Google Drive, ed è facoltativo.</p></details>
 <details><summary>Dove sono salvate le mie password?</summary><p>Solo sul tuo dispositivo, nello storico cifrato (con le protezioni di Windows o di Android). Le proposte generate non vengono salvate: resta solo quella che registri tu con «Ho cambiato la password».</p></details>
-<details><summary>Windows mi dice «Windows ha protetto il PC». È normale?</summary><p>Sì: il programma non è firmato digitalmente e Windows lo segnala per qualsiasi software poco diffuso. Premi «Ulteriori informazioni» e poi «Esegui comunque». Se vuoi, prima controlla l'impronta SHA-256 dello zip, riportata nelle note della versione.</p></details>
+<details><summary>Windows mi dice «Windows ha protetto il PC». È normale?</summary><p>Sì: il programma non è firmato digitalmente e Windows lo segnala per qualsiasi software poco diffuso. Premi «Ulteriori informazioni» e poi «Esegui comunque». Se vuoi, prima controlla l'impronta SHA-256 dello zip, riportata sotto il pulsante di download.</p></details>
 <details><summary>Come faccio ad aggiornare l'app?</summary><p>Nelle impostazioni puoi attivare il controllo delle nuove versioni (spento di base). Quando ce n'è una, compare un avviso con il pulsante «Scarica». L'app non scarica né installa niente da sola.</p></details>
 <details><summary>Cosa succede se dimentico la frase segreta della sincronizzazione?</summary><p>Non si può recuperare: il file cifrato non si apre più. Lo storico locale resta sul dispositivo e puoi creare un nuovo file di sincronizzazione.</p></details>
 </div></section>
 <script>
 (function () {
+  var DL = 'https://afcoding.it/passwordgen-download/';
   function setup(platform, file) {
-    fetch('updates/' + platform + '.json', { cache: 'no-store' })
+    fetch(DL + 'updates/' + platform + '.json', { cache: 'no-store' })
       .then(function (r) { return r.json(); })
       .then(function (m) {
         if (!m || m.format !== 1 || !/^[0-9]+(\.[0-9]+){2,3}$/.test(m.version)) { return; }
-        var url = 'https://github.com/francavilla/passwordgen-releases/releases/download/passwordgen-' + platform + '-v' + m.version + '/' + file.replace('{v}', m.version);
-        ['dl-', 'hero-'].forEach(function (p) { var e = document.getElementById(p + platform); if (e) { e.href = url; } });
         var v = document.getElementById('v-' + platform); if (v) { v.textContent = 'Versione ' + m.version; }
         var h = document.getElementById('hero-ver'); if (h) { h.textContent = 'Ultima versione: ' + m.version; }
+        fetch(DL + file + '.sha256', { cache: 'no-store' })
+          .then(function (r) { return r.text(); })
+          .then(function (t) {
+            var hash = (t.split(/\s+/)[0] || '').toLowerCase();
+            var e = document.getElementById('s-' + platform);
+            if (e && /^[0-9a-f]{64}$/.test(hash)) { e.textContent = 'SHA-256: ' + hash; }
+          }).catch(function () {});
       })
       .catch(function () {});
   }
-  setup('desktop', 'PasswordGen-Desktop-v{v}.zip');
-  setup('android', 'PasswordGen-Android-v{v}.apk');
+  setup('desktop', 'PasswordGen-Desktop-latest.zip');
+  setup('android', 'PasswordGen-Android-latest.apk');
 })();
 </script>
 <footer><div class="wrap">
